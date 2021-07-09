@@ -1,4 +1,5 @@
 import {useState, useEffect, useRef} from 'react';
+import PropTypes from 'prop-types';
 import searchIcon from '../../images/search-icon.svg';
 import { Wrapper, Content } from './Search.styles';
 
@@ -36,6 +37,10 @@ const Search = ({setSeachTerm}) => {
             </Content>
         </Wrapper>
     )
+}
+
+Search.propType = {
+    setSeachTerm: PropTypes.string
 }
 
 export default Search
