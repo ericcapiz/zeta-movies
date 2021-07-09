@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router';
-import {IMAGE_BASE_SIZE, IMAGE_BASE_URL, POSTER_SIZE} from '../config';
+import { IMAGE_BASE_URL, POSTER_SIZE} from '../config';
 import { useMovieFetch } from '../hooks/useMovieFetch';
 import Grid from './Grid';
 import MovieInfo from './MovieInfo';
