@@ -5,11 +5,12 @@ import HeroImage from './HeroImage';
 import Grid from './Grid';
 import Thumb from './Thumb';
 import Spinner from './Spinner';
+import Search from './Search';
 import NoImage from '../images/no_image.jpg';
 
 
 const Home = () => {
-   const {state, loading, error} = useHomeFetch()
+   const {state, loading, error, setSearchTerm} = useHomeFetch()
 
     return (
         <>
@@ -18,8 +19,8 @@ const Home = () => {
                     image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.results[1].backdrop_path}`}
                     title={state.results[1].original_title}
                     text={state.results[1].overview}
-                 /> : null
-            }
+                 /> : null}
+            <Search setSeachTerm={setSearchTerm} />
             <Grid header='Popular Movies'>
                 {state.results.map((movie) => (
                     <Thumb 
