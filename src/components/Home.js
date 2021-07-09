@@ -10,18 +10,18 @@ import NoImage from '../images/no_image.jpg';
 
 
 const Home = () => {
-   const {state, loading, error, setSearchTerm} = useHomeFetch()
+   const {state, loading, error, searchTerm, setSearchTerm} = useHomeFetch()
 
     return (
         <>
-            {state.results[1] ? 
+            {!searchTerm && state.results[1] ? ( 
                 <HeroImage
                     image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.results[1].backdrop_path}`}
                     title={state.results[1].original_title}
                     text={state.results[1].overview}
-                 /> : null}
+                 /> ) : null}
             <Search setSeachTerm={setSearchTerm} />
-            <Grid header='Popular Movies'>
+            <Grid header={searchTerm ? 'Search Results' : 'Popular Movies'}>
                 {state.results.map((movie) => (
                     <Thumb 
                         key={movie.id} 

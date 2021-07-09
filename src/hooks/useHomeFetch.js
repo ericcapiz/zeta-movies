@@ -9,7 +9,7 @@ const initialState = {
 }
 
 export const useHomeFetch = () => {
-    const [state, setSate] = useState(initialState);
+    const [state, setState] = useState(initialState);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
@@ -21,7 +21,7 @@ export const useHomeFetch = () => {
 
             const movies = await API.fetchMovies(searchTerm, page);
 
-            setSate(prev => ({
+            setState(prev => ({
                 ...movies,
                 results:
                     page > 1 ? [...prev.results, ...movies.results] : [...movies.results]
@@ -33,8 +33,9 @@ export const useHomeFetch = () => {
     }
 
     useEffect(() => {
-        fetchMovies(1)
-    },[])
+        setState(initialState)
+        fetchMovies(1, searchTerm)
+    },[searchTerm])
 
-    return {state, loading, error, setSearchTerm}
+    return {state, loading, error, searchTerm, setSearchTerm}
 }
