@@ -1,6 +1,6 @@
 # Zeta Movies
 
-![Project Image](https://i.ibb.co/5kHbwyS/zeta1.png)
+![Project Image](https://i.ibb.co/3NcSYSG/zeta1.png)
 ![Project Image](https://i.ibb.co/0r5Csk7/zeta2.png)
 
 

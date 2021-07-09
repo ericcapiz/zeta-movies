@@ -9,7 +9,7 @@ const Header = () => {
         <Wrapper>
             <Content>
                 <Link style={{textDecoration: "none"}} to="/">
-                    <Logo>Zeta Films </Logo>
+                    <Logo>Zeta Movies</Logo>
                 </Link>
                 <a href="https://www.themoviedb.org/" target="_blank" rel="noreferrer">
                     <TMDBLogoImg src={TMDBLogo} alt="rmdb-logo" />
