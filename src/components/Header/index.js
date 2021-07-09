@@ -8,12 +8,12 @@ const Header = () => {
     return (
         <Wrapper>
             <Content>
-                <a href="https://www.themoviedb.org/" target="_blank">
-                    <TMDBLogoImg src={TMDBLogo} alt="rmdb-logo" />
-                </a>
                 <Link style={{textDecoration: "none"}} to="/">
                     <Logo>Zeta Films </Logo>
                 </Link>
+                <a href="https://www.themoviedb.org/" target="_blank">
+                    <TMDBLogoImg src={TMDBLogo} alt="rmdb-logo" />
+                </a>
             </Content>
         </Wrapper>
     )

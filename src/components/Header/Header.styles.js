@@ -15,10 +15,10 @@ export const Content = styled.div`
 `;
 
 export const Logo = styled.h2`
-  width: 200px;
+  font-size: var(--fontBig);
   color: var(--white);
-  @media screen and (max-width: 500px) {
-    width: 150px;
+  @media screen and (max-width: 650px) {
+    font-size: var(--fontMed);
   }
 `;
 

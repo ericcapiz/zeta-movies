@@ -1,10 +1,24 @@
-import React from 'react'
+import React from 'react';
+import { useParams } from 'react-router';
+import {IMAGE_BASE_SIZE, POSTER_SIZE} from '../config';
+import { useMovieFetch } from '../hooks/useMovieFetch';
+import Grid from './Grid';
+import MovieInfo from './MovieInfo';
+import BreadCrumb from './BreadCrumb';
+import Spinner from './Spinner';
+import NoImage from '../images/no_image.jpg';
 
 const Movie = () => {
+    const {movieId} = useParams();
+    const {state: movie, loading, error} = useMovieFetch(movieId);
+    if(loading) return <Spinner />
+    if(error) return <div>Something Went Wrong</div>
+
     return (
-        <div>
-            movie
-        </div>
+        <>
+            <BreadCrumb movieTitle={movie.original_title} />
+            <MovieInfo movie={movie} />
+        </>
     )
 }
 
