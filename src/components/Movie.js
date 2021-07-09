@@ -6,6 +6,7 @@ import Grid from './Grid';
 import MovieInfo from './MovieInfo';
 import BreadCrumb from './BreadCrumb';
 import Spinner from './Spinner';
+import MovieInfoBar from './MovieInfoBar';
 import NoImage from '../images/no_image.jpg';
 
 const Movie = () => {
@@ -18,6 +19,11 @@ const Movie = () => {
         <>
             <BreadCrumb movieTitle={movie.original_title} />
             <MovieInfo movie={movie} />
+            <MovieInfoBar 
+                time={movie.runtime} 
+                budget={movie.budget} 
+                revenue={movie.revenue} 
+            />
         </>
     )
 }
