@@ -22,15 +22,18 @@ export const useHomeFetch = () => {
       setLoading(true);
 
       const movies = await API.fetchMovies(searchTerm, page);
+      console.log("Movies data in hook:", movies);
 
-      if (!movies || !movies.results) {
-        throw new Error("Invalid API response");
+      if (!movies) {
+        throw new Error("No movies data received");
       }
 
       setState((prev) => ({
         ...movies,
         results:
-          page > 1 ? [...prev.results, ...movies.results] : [...movies.results],
+          page > 1
+            ? [...(prev.results || []), ...(movies.results || [])]
+            : [...(movies.results || [])],
       }));
     } catch (error) {
       setError(true);
@@ -47,11 +50,14 @@ export const useHomeFetch = () => {
 
     if (!searchTerm) {
       const sessionState = isPersistedState("homeState");
-      if (sessionState) {
+      if (sessionState && sessionState.results) {
+        console.log("Loading from session storage:", sessionState);
         setState(sessionState);
         return;
       }
     }
+
+    console.log("Fetching movies with searchTerm:", searchTerm);
     fetchMovies(1, searchTerm);
   }, [searchTerm]);
 
@@ -64,7 +70,8 @@ export const useHomeFetch = () => {
 
   // Write to sessionStorage
   useEffect(() => {
-    if (!searchTerm && state.results.length) {
+    if (!searchTerm && state.results && state.results.length > 0) {
+      console.log("Saving to session storage:", state);
       sessionStorage.setItem("homeState", JSON.stringify(state));
     }
   }, [searchTerm, state]);
