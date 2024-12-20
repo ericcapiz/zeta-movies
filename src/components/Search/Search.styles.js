@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import styled from "styled-components";
+=======
+import styled from 'styled-components';
+>>>>>>> 5f1f4676f99ff4c2be008e43e2b334c407c9a12a
 
 export const Wrapper = styled.div`
   display: flex;
@@ -34,7 +38,10 @@ export const Content = styled.div`
     background: transparent;
     height: 40px;
     color: var(--white);
+<<<<<<< HEAD
     outline: none;
+=======
+>>>>>>> 5f1f4676f99ff4c2be008e43e2b334c407c9a12a
     :focus {
       outline: none;
     }
@@ -42,4 +49,8 @@ export const Content = styled.div`
       font-size: 28px;
     }
   }
+<<<<<<< HEAD
 `;
+=======
+`;
+>>>>>>> 5f1f4676f99ff4c2be008e43e2b334c407c9a12a
