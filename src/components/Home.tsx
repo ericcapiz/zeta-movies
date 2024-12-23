@@ -9,7 +9,7 @@ import Search from "./Search";
 import Button from "./Button";
 import NoImage from "../images/no_image.jpg";
 
-const Home = () => {
+const Home = (): JSX.Element => {
   const { state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore } =
     useHomeFetch();
 
