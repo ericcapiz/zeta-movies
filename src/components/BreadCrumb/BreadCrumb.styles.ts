@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -15,6 +15,9 @@ export const Content = styled.div`
   width: 100%;
   max-width: var(--maxWidth);
   padding: 0 20px;
+  a {
+    text-decoration: none;
+  }
   span {
     font-size: 1.2rem;
     color: var(--white);

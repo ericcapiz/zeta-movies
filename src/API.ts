@@ -1,9 +1,7 @@
 import { SEARCH_BASE_URL, POPULAR_BASE_URL, API_URL } from "./config";
 
-// interface is what we want to return
-
 // Types for Movie results
-interface Movie {
+export interface Movie {
   id: number;
   title: string;
   poster_path: string | null;
@@ -15,18 +13,37 @@ interface Movie {
 }
 
 // Types for API responses
-interface MoviesResponse {
+export interface MoviesResponse {
   page: number;
   results: Movie[];
   total_pages: number;
   total_results: number;
 }
 
-interface MovieResponse extends Movie {
+export interface MovieResponse extends Movie {
   budget: number;
   revenue: number;
   runtime: number;
   status: string;
+}
+
+export interface Cast {
+  credit_id: string;
+  name: string;
+  character: string;
+  profile_path: string | null;
+}
+
+export interface Crew {
+  credit_id: string;
+  name: string;
+  job: string;
+}
+
+export interface Credits {
+  id: number;
+  cast: Cast[];
+  crew: Crew[];
 }
 
 const apiSettings = {
@@ -83,6 +100,28 @@ const apiSettings = {
       return data;
     } catch (error) {
       console.error("Error fetching movie:", error);
+      throw error;
+    }
+  },
+
+  fetchCredits: async (movieId: number): Promise<Credits> => {
+    try {
+      const creditsEndpoint: string = `${API_URL}movie/${movieId}/credits`;
+
+      const response = await fetch(creditsEndpoint, {
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_ACCESS_TOKEN}`,
+          accept: "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Credits fetch failed: ${response.status}`);
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error("Error fetching credits:", error);
       throw error;
     }
   },

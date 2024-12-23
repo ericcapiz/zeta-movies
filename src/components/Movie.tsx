@@ -12,10 +12,12 @@ import NoImage from "../images/no_image.jpg";
 
 const Movie = () => {
   const { movieId } = useParams<{ movieId: string }>();
-  const { state: movie, loading, error } = useMovieFetch(movieId);
+  const { state: movie, loading, error } = useMovieFetch(movieId || "");
 
+  if (!movieId) return <div>Movie not found</div>;
   if (loading) return <Spinner />;
   if (error) return <div>Something went wrong...</div>;
+  if (!movie) return null;
 
   return (
     <>

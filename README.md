@@ -3,7 +3,6 @@
 ![Project Image](https://i.ibb.co/3NcSYSG/zeta1.png)
 ![Project Image](https://i.ibb.co/0r5Csk7/zeta2.png)
 
-
 ---
 
 ### Table of Contents
@@ -17,14 +16,17 @@
 
 ## Description
 
-This app will allow users to search for movies and view movie cards for additional movie info.  View the app at https://zeta-films.vercel.app/
+This app will allow users to search for movies and view movie cards for additional movie info. View the app at https://zeta-films.vercel.app/
 
 #### Technologies/Libraries
 
 - React (useState)
+- TypeScript
 - React Router
-- PropTypes
 - Styled Components
+- PropTypes
+
+[//]: # "Removed PropTypes since we're using TypeScript for type checking now"
 
 ---
 

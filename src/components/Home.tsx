@@ -8,6 +8,7 @@ import Spinner from "./Spinner";
 import Search from "./Search";
 import Button from "./Button";
 import NoImage from "../images/no_image.jpg";
+import { Movie } from "../API"; // Add this import
 
 const Home = () => {
   const { state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore } =
@@ -26,7 +27,7 @@ const Home = () => {
       ) : null}
       <Search setSeachTerm={setSearchTerm} />
       <Grid header={searchTerm ? "Search Results" : "Popular Movies"}>
-        {state.results.map((movie) => (
+        {state.results.map((movie: Movie) => (
           <Thumb
             key={movie.id}
             clickable

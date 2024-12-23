@@ -3,36 +3,14 @@ import { IMAGE_BASE_URL, POSTER_SIZE } from "../../config";
 import NoImage from "../../images/no_image.jpg";
 import { Wrapper, Content, Text } from "./MovieInfo.styles";
 import Thumb from "../Thumb";
-
-interface Actor {
-  credit_id: string;
-  name: string;
-  character: string;
-}
-
-interface Director {
-  credit_id: string;
-  name: string;
-  job: string;
-}
-
-interface Movie {
-  backdrop_path: string;
-  budget: number;
-  directors: Director[];
-  runtime: number;
-  title: string;
-  overview: string;
-  vote_average: number;
-  poster_path: string;
-}
+import { MovieState } from "../../hooks/useMovieFetch";
 
 interface MovieInfoProps {
-  movie: Movie;
+  movie: MovieState;
 }
 
 const MovieInfo = ({ movie }: MovieInfoProps) => (
-  <Wrapper backdrop={movie.backdrop_path}>
+  <Wrapper backdrop={movie.backdrop_path || ""}>
     <Content>
       <Thumb
         image={

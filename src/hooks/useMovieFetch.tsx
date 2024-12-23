@@ -1,29 +1,14 @@
 import { useState, useEffect } from "react";
-import API from "../API";
+import API, { MovieResponse, Credits, Crew } from "../API";
 import { isPersistedState } from "../helpers";
 
-interface Credits {
-  cast: {
-    credit_id: string;
-    name: string;
-    character: string;
-    profile_path: string | null;
-  }[];
-  crew: {
-    credit_id: string;
-    name: string;
-    job: string;
-  }[];
-}
-
-interface MovieState {
-  [key: string]: any; // This allows for dynamic properties
-  actors?: Credits["cast"];
-  directors?: Credits["crew"];
+export interface MovieState extends MovieResponse {
+  actors: Credits["cast"];
+  directors: Credits["crew"];
 }
 
 export const useMovieFetch = (movieId: string) => {
-  const [state, setState] = useState<MovieState>({});
+  const [state, setState] = useState<MovieState | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -36,13 +21,12 @@ export const useMovieFetch = (movieId: string) => {
         const movie = await API.fetchMovie(Number(movieId));
         const credits = await API.fetchCredits(Number(movieId));
 
-        // Check if we have valid data
         if (!movie || !credits) {
-          throw new Error("Missing movie or credits data");
+          throw new Error("Movie or credits not found");
         }
 
         const directors = credits.crew.filter(
-          (member) => member.job === "Director"
+          (member: Crew) => member.job === "Director"
         );
 
         setState({
@@ -53,9 +37,7 @@ export const useMovieFetch = (movieId: string) => {
 
         setLoading(false);
       } catch (error) {
-        console.error("Error in fetchMovie:", error);
         setError(true);
-        setLoading(false);
       }
     };
 
@@ -71,7 +53,9 @@ export const useMovieFetch = (movieId: string) => {
   }, [movieId]);
 
   useEffect(() => {
-    sessionStorage.setItem(movieId, JSON.stringify(state));
+    if (state) {
+      sessionStorage.setItem(movieId, JSON.stringify(state));
+    }
   }, [movieId, state]);
 
   return { state, loading, error };
