@@ -8,7 +8,7 @@ import NotFound from "./components/NotFound";
 
 import { GlobalStyle } from "./GlobalStyle";
 
-const App = (): JSX.Element => (
+const App = () => (
   <Router>
     <Header />
     <Routes>

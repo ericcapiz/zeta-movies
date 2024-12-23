@@ -6,7 +6,7 @@ interface ButtonProps {
   callback: () => void;
 }
 
-const Button = ({ text, callback }: ButtonProps): JSX.Element => (
+const Button = ({ text, callback }: ButtonProps) => (
   <Wrapper type="button" onClick={callback}>
     {text}
   </Wrapper>

@@ -7,7 +7,7 @@ interface HeroImageProps {
   text: string;
 }
 
-const HeroImage = ({ image, title, text }: HeroImageProps): JSX.Element => (
+const HeroImage = ({ image, title, text }: HeroImageProps) => (
   <Wrapper image={image}>
     <Content>
       <Text>

@@ -1,18 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import TMDBLogo from "../../images/tmdb_logo.svg";
+import { Wrapper, Content, Logo, TMDBLogoImg } from "./Header.styles";
 
-import ZetaLogo from "../../images/zeta-logo.svg";
+const Header = () => {
+  const handleLogoClick = (): void => {
+    // Clear session storage when clicking logo
+    sessionStorage.removeItem("homeState");
+  };
 
-import { Wrapper, Content, LogoImg } from "./Header.styles";
-
-const Header = (): JSX.Element => (
-  <Wrapper>
-    <Content>
-      <Link to="/">
-        <LogoImg src={ZetaLogo} alt="zeta-logo" />
-      </Link>
-    </Content>
-  </Wrapper>
-);
+  return (
+    <Wrapper>
+      <Content>
+        <Link
+          style={{ textDecoration: "none" }}
+          to="/"
+          onClick={handleLogoClick}
+        >
+          <Logo>Zeta Movies</Logo>
+        </Link>
+        <a href="https://www.themoviedb.org/" target="_blank" rel="noreferrer">
+          <TMDBLogoImg src={TMDBLogo} alt="rmdb-logo" />
+        </a>
+      </Content>
+    </Wrapper>
+  );
+};
 
 export default Header;

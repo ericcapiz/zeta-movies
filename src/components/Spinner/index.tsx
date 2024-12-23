@@ -1,6 +1,6 @@
 import React from "react";
 import { Spinner } from "./Spinner.styles";
 
-const SpinnerComponent = (): JSX.Element => <Spinner />;
+const SpinnerComponent = () => <Spinner />;
 
 export default SpinnerComponent;

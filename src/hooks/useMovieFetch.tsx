@@ -2,8 +2,28 @@ import { useState, useEffect } from "react";
 import API from "../API";
 import { isPersistedState } from "../helpers";
 
-export const useMovieFetch = (movieId) => {
-  const [state, setState] = useState({});
+interface Credits {
+  cast: {
+    credit_id: string;
+    name: string;
+    character: string;
+    profile_path: string | null;
+  }[];
+  crew: {
+    credit_id: string;
+    name: string;
+    job: string;
+  }[];
+}
+
+interface MovieState {
+  [key: string]: any; // This allows for dynamic properties
+  actors?: Credits["cast"];
+  directors?: Credits["crew"];
+}
+
+export const useMovieFetch = (movieId: string) => {
+  const [state, setState] = useState<MovieState>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -12,9 +32,9 @@ export const useMovieFetch = (movieId) => {
       try {
         setLoading(true);
         setError(false);
-        const movie = await API.fetchMovie(movieId);
 
-        const credits = await API.fetchCredits(movieId);
+        const movie = await API.fetchMovie(Number(movieId));
+        const credits = await API.fetchCredits(Number(movieId));
 
         // Check if we have valid data
         if (!movie || !credits) {

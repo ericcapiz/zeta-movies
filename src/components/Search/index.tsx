@@ -8,7 +8,7 @@ interface SearchProps {
   setSeachTerm: (term: string) => void;
 }
 
-const Search = ({ setSeachTerm }: SearchProps): JSX.Element => {
+const Search = ({ setSeachTerm }: SearchProps) => {
   const [state, setState] = useState("");
   const initial = useRef(true);
 

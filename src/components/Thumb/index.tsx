@@ -8,7 +8,7 @@ interface ThumbProps {
   clickable: boolean;
 }
 
-const Thumb = ({ image, movieId, clickable }: ThumbProps): JSX.Element => (
+const Thumb = ({ image, movieId, clickable }: ThumbProps) => (
   <div>
     {clickable ? (
       <Link to={`/${movieId}`}>

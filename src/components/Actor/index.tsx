@@ -7,7 +7,7 @@ interface ActorProps {
   imageUrl: string;
 }
 
-const Actor = ({ name, character, imageUrl }: ActorProps): JSX.Element => (
+const Actor = ({ name, character, imageUrl }: ActorProps) => (
   <Wrapper>
     <Image src={imageUrl} alt="actor-thumb" />
     <h3>{name}</h3>

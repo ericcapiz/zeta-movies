@@ -8,11 +8,7 @@ interface MovieInfoBarProps {
   revenue: number;
 }
 
-const MovieInfoBar = ({
-  time,
-  budget,
-  revenue,
-}: MovieInfoBarProps): JSX.Element => (
+const MovieInfoBar = ({ time, budget, revenue }: MovieInfoBarProps) => (
   <Wrapper>
     <Content>
       <div className="column">

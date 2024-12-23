@@ -31,7 +31,7 @@ interface MovieInfoProps {
   movie: Movie;
 }
 
-const MovieInfo = ({ movie }: MovieInfoProps): JSX.Element => (
+const MovieInfo = ({ movie }: MovieInfoProps) => (
   <Wrapper backdrop={movie.backdrop_path}>
     <Content>
       <Thumb

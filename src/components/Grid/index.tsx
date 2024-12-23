@@ -6,7 +6,7 @@ interface GridProps {
   children: React.ReactNode;
 }
 
-const Grid = ({ header, children }: GridProps): JSX.Element => (
+const Grid = ({ header, children }: GridProps) => (
   <Wrapper>
     <h1>{header}</h1>
     <Content>{children}</Content>

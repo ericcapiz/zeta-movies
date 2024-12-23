@@ -10,7 +10,7 @@ import Actor from "./Actor";
 import { useMovieFetch } from "../hooks/useMovieFetch";
 import NoImage from "../images/no_image.jpg";
 
-const Movie = (): JSX.Element => {
+const Movie = () => {
   const { movieId } = useParams<{ movieId: string }>();
   const { state: movie, loading, error } = useMovieFetch(movieId);
 

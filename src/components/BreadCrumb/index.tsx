@@ -6,7 +6,7 @@ interface BreadCrumbProps {
   movieTitle: string;
 }
 
-const BreadCrumb = ({ movieTitle }: BreadCrumbProps): JSX.Element => (
+const BreadCrumb = ({ movieTitle }: BreadCrumbProps) => (
   <Wrapper>
     <Content>
       <Link to="/">

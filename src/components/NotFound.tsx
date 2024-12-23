@@ -1,6 +1,6 @@
 import React from "react";
 
-const NotFound = (): JSX.Element => (
+const NotFound = () => (
   <div>
     <h1>Sorry, this page does not exist!</h1>
   </div>
